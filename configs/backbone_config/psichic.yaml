@@ -1,0 +1,50 @@
+# 指定任务类型（可选值: regression, classification, multiclassification）
+task_type: classification
+device: cuda
+datafolder: biosnap
+# 网络结构参数
+params:
+  mol_in_channels: 43
+  prot_in_channels: 33
+  prot_evo_channels: 1280
+  hidden_channels: 200
+  pre_layers: 2
+  post_layers: 1
+  aggregators: [mean, min, max, std]
+  scalers: [identity, amplification, linear]
+  total_layer: 3
+  K: [5, 10, 20]
+  t: 1
+  heads: 5
+  dropout: 0.0
+  dropout_attn_score: 0.2
+  drop_atom: 0
+  drop_residue: 0
+  dropout_cluster_edge: 0
+  gaussian_noise: 0
+
+  # 以下用于控制输出分支（根据任务类型自动设置）
+  regression_head: true
+  classification_head: false
+  multiclassification_head: 0
+
+  device: cuda:0
+
+# 启用的任务类型（仅启用一个）
+tasks:
+  regression_task: true
+  classification_task: false
+  mclassification_task: 0
+
+# 优化器设置
+optimizer:
+  lrate: 0.0001
+  eps: 1e-8
+  betas: [0.9, 0.999]
+  min_lrate: 1e-7
+  weight_decay: 0.0
+  amsgrad: false
+  clip: 5.0
+  warmup_iters: 1000
+  lr_decay_iters: 30000
+  schedule_lr: true
