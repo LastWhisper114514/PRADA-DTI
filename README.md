@@ -13,4 +13,4 @@ run scripts/run.sh to start training
 #data
 data should be in csv with columns including SMILES, Protein, interaction and domain_id
 what's more, you should prepare a degree file(.pt) of proteins and ligands of your dataset as our backbone PSICHIC requires that.
-If you dont know how, follow PSICHIC to do so.
+If you dont know how, follow PSICHIC(https://github.com/huankoh/PSICHIC?tab=Apache-2.0-1-ov-file) to do so.
